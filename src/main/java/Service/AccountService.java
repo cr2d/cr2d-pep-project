@@ -1,20 +1,21 @@
 package Service;
 
 import Model.Account;
-import DAO.SocialMediaDAO;
+//import Model.Message;   
+import DAO.AccountDAO;
 
-public class SocialMediaService {
-    SocialMediaDAO accountDAO;
+public class AccountService {
+    AccountDAO accountDAO;
 
-    public SocialMediaService(){
-        accountDAO = new SocialMediaDAO();
+    public AccountService(){
+        accountDAO = new AccountDAO();
     }
-    public SocialMediaService(SocialMediaDAO accountDAO){
+    public AccountService(AccountDAO accountDAO){
         this.accountDAO = accountDAO;
     }
 
     public Account addAccount(Account account){
-        Account mock = accountDAO.insertFlight(account);
+        Account mock = accountDAO.insertAccount(account);
         return mock;
     }
 

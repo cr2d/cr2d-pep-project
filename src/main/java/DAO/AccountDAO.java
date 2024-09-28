@@ -1,13 +1,14 @@
 package DAO;
 
 import Model.Account;
+
 import Util.ConnectionUtil;
 import java.sql.*;
 //import java.sql.Connection;
 //import java.sql.SQLException;
 
-public class SocialMediaDAO {
-    public Account insertFlight(Account account){
+public class AccountDAO {
+    public Account insertAccount(Account account){
         Connection connection = ConnectionUtil.getConnection();
         try {
             String sql = "INSERT INTO account (username, password) values (?,?);" ;
