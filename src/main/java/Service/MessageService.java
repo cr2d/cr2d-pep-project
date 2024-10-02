@@ -30,4 +30,14 @@ public class MessageService {
         messageDao.messageDelByID(id);
         return toBeDeleted;
     }
+    public Message UpdateMessageByID(String id, Message message){
+        Message qualify = messageDao.messageGetByID(id);
+        if(qualify != null){
+            if(message.getMessage_text() != "" && message.getMessage_text().length() < 255){
+                messageDao.UpdateMessage(id, message);
+                return messageDao.messageGetByID(id);
+            }
+        }
+        return null;
+    }
 }
