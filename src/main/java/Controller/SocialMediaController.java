@@ -34,6 +34,8 @@ public class SocialMediaController {
         app.post("/login", this::PostLoginHandler);
         app.post("/messages", this::PostMessageHandler);
         app.get("/messages", this::GetAlMessageHandler);
+        app.get("/messages/{message_id}", this::GetMessageByIDHandler);
+        app.delete("/messages/{message_id}", this::DeleteMessageByIDHandler);
 
         return app;
     }
@@ -83,7 +85,21 @@ public class SocialMediaController {
         List<Message> messages = messageService.getAllMessages();
         ctx.json(messages);
     }
-
-
-
+    private void GetMessageByIDHandler(Context ctx) throws JsonProcessingException{
+        Message message = messageService.getMessageByID(ctx.pathParam("message_id"));
+        if(message == null){
+            ctx.status(200);
+        }else{
+            ctx.json(message);
+        }
+    }
+    private void DeleteMessageByIDHandler(Context ctx) throws JsonProcessingException{
+        Message message = messageService.DelMessageByID(ctx.pathParam("message_id"));
+        if(message == null){
+            ctx.status(200);
+        }else{
+            ctx.json(message);
+        }
+        
+    }
 }

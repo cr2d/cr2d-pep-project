@@ -20,7 +20,14 @@ public class MessageService {
        // if(smDAO.getBookByIsbn(isbn_new) != null){
          //   return null;
         //}
-        Message m = messageDao.postMessage(message);
         return messageDao.postMessage(message);
+    }
+    public Message getMessageByID (String id){
+        return messageDao.messageGetByID(id);
+    }
+    public Message DelMessageByID(String id){
+        Message toBeDeleted = messageDao.messageGetByID(id);
+        messageDao.messageDelByID(id);
+        return toBeDeleted;
     }
 }
