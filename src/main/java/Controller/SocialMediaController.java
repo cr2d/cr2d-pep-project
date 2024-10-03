@@ -37,6 +37,7 @@ public class SocialMediaController {
         app.get("/messages/{message_id}", this::GetMessageByIDHandler);
         app.delete("/messages/{message_id}", this::DeleteMessageByIDHandler);
         app.patch("/messages/{message_id}", this::UpdateMessageByIDHandler);
+        app.get("/accounts/{account_id}/messages", this::GetAllMessagesByUserIDHandler);
 
         return app;
     }
@@ -114,5 +115,10 @@ public class SocialMediaController {
             ctx.status(200);
             ctx.json(mapper.writeValueAsString(updateMessage));
         }
+    }
+    private void GetAllMessagesByUserIDHandler(Context ctx) throws JsonProcessingException{
+        List<Message> messages = messageService.GetAllMessageByUserID(ctx.pathParam("account_id"));
+        ctx.json(messages);
+        
     }
 }

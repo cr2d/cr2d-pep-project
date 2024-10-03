@@ -14,6 +14,9 @@ public class MessageService {
     public List<Message> getAllMessages() {
         return messageDao.getAllMessage();
     }
+    public List<Message> GetAllMessageByUserID(String id){
+        return messageDao.getAllMessageByID(id);
+    }
 
     public Message newMessage(Message message){
         int poster = message.getPosted_by();
